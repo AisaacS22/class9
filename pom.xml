@@ -1,17 +1,30 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<!-- Archivo POM para el proyecto class9 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <!-- Versión del modelo de POM -->
     <modelVersion>4.0.0</modelVersion>
 
+    <!-- Información del grupo, artefacto y versión del proyecto -->
     <groupId>isa.ejercicio</groupId>
     <artifactId>class9</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <!-- Propiedades del proyecto -->
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+
+    <!-- Dependencia para el driver síncrono de MongoDB -->
+    <dependencies>
+        <dependency>
+            <groupId>org.mongodb</groupId>
+            <artifactId>mongodb-driver-sync</artifactId>
+            <version>5.0.1</version>
+        </dependency>
+    </dependencies>
 
 </project>

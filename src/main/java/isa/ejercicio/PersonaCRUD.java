@@ -1,3 +1,5 @@
+package isa.ejercicio;
+
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
@@ -8,7 +10,7 @@ public class PersonaCRUD {
     public PersonaCRUD(MongoDatabase database, String collectionName) {
         this.collection = database.getCollection(collectionName);
     }
-
+//Esta funcion inserta una persona en la base de datos
     public boolean insertarPersona(String nombre, int edad, String ciudad) {
         try {
             Document persona = new Document("nombre", nombre)
@@ -23,14 +25,18 @@ public class PersonaCRUD {
             return false;
         }
     }
-
-    public void mostrarPersonas() {
-        System.out.println("Listado de personas:");
+//Esta funcion muestra todas las personas en la base de datos
+    public String mostrarPersonas() {
+        StringBuilder personasInfo = new StringBuilder();
         collection.find().forEach(document -> {
-            System.out.println(document.toJson());
+            personasInfo.append("Nombre: ").append(document.getString("nombre"))
+                    .append(", Edad: ").append(document.getInteger("edad"))
+                    .append(", Ciudad: ").append(document.getString("ciudad"))
+                    .append("\n");
         });
+        return personasInfo.toString();
     }
-
+//Esta funcion actualiza el nombre de una persona en la base de datos
     public boolean actualizarPersona(String nombreActual, String nuevoNombre) {
         try {
             collection.updateOne(
@@ -44,7 +50,7 @@ public class PersonaCRUD {
             return false;
         }
     }
-
+//Esta funcion elimina una persona de la base de datos
     public boolean eliminarPersona(String nombre) {
         try {
             collection.deleteOne(new Document("nombre", nombre));

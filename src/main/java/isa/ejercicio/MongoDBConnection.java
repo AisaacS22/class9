@@ -20,4 +20,19 @@ public class MongoDBConnection {
     public MongoDatabase getDatabase() {
         return database;
     }
+
+    public MongoClientSettings getSettings() {
+        return settings;
+    }
+
+    public void setSettings(MongoClientSettings settings) {
+        this.settings = settings;
+    }
+
+    public void setDatabase(MongoDatabase database) {
+        this.database = database;
+    }
+
+    public void close() {
+    }
 }
